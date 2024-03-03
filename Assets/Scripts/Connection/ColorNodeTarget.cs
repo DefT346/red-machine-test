@@ -1,5 +1,6 @@
 using System;
 using Events;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Connection
@@ -27,7 +28,9 @@ namespace Connection
 
         private void OnColorChanged(Color currentColor)
         {
-            TargetCompletionChangeEvent?.Invoke(this, targetColor == currentColor);
+            var targetColorHex = targetColor.ToHexString();
+            var currentColorHex = currentColor.ToHexString();
+            TargetCompletionChangeEvent?.Invoke(this, targetColorHex == currentColorHex);
         }
 
         private void OnValidate()
